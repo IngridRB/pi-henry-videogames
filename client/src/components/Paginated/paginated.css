@@ -1,0 +1,33 @@
+.footer {
+  background-color: #0C2F5B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5em 0;
+  border-top:  1px solid #1655A2;
+}
+.footer-button {
+  color: #C900DF;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 2rem;
+  width: 37px;
+  height: 37px;
+  cursor: pointer;
+}
+.footer-button:disabled {
+  color: transparent;
+}
+
+.footer-button:hover {
+  border-radius: 50%;
+  background-color: #1655A2;
+  color: white;
+}
+
+.footer-button.active{
+  border-radius: 50%;
+  background-color: #C900DF;
+  color: white;
+}
