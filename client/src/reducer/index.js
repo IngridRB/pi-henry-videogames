@@ -1,9 +1,11 @@
 const initialState = {
   videogamesLoaded : [],
   allVideogames: [],
+  
+  filteredVideogames: [],
+
   genresLoaded: [],
   platformsLoaded: [],
-  videogameDetail: {},
 }
 
 function rootReducer (state = initialState, action) {
@@ -37,12 +39,44 @@ function rootReducer (state = initialState, action) {
         ...state,
       }
 
-    case 'GET_VIDEOGAMES_DETAILS':
+    // case 'GET_VIDEOGAMES_DETAILS':
+    //   return {
+    //     ...state,
+    //     videogameDetail: action.payload,
+    //   }
+    
+    case 'FILTER_VIDEOGAMES':
+      const filteredVideogames = state.videogamesLoaded.filter((videogame) => {
+        return (
+          (action.payload.genre === 'all' || videogame.genres?.includes(action.payload.genre)) &&
+          (action.payload.origin === 'all' || videogame.source === action.payload.origin)
+        );
+      }).sort(
+        (videogameA, videogameB) => {
+          if (action.payload.sortBy === 'rating-asc' || action.payload.sortBy === 'rating-desc') {
+            // parseInt(videogameA.rating) - parseInt(videogameB.rating)
+            const ratingA = videogameA.rating;
+            const ratingB = videogameB.rating;
+            return action.payload.sortBy === 'rating-asc' ? (
+              parseInt(ratingA) - parseInt(ratingB)
+            ) : (
+              parseInt(ratingB) - parseInt(ratingA)
+            );
+          }
+          if (action.payload.sortBy === 'alpha-asc' || action.payload.sortBy === 'alpha-desc') {
+            return action.payload.sortBy === 'alpha-asc' ? (
+              videogameA.name.localeCompare(videogameB.name)
+            ) : (
+              videogameB.name.localeCompare(videogameA.name)
+            );
+          }
+          return 0;
+        }
+      );
       return {
         ...state,
-        videogameDetail: action.payload,
-      }
-  
+        filteredVideogames,
+      };
 
       // case 'FILTER_BY_STATUS':
       //   const allVideogames = state.allVideogames;
@@ -82,9 +116,11 @@ function rootReducer (state = initialState, action) {
         // return {
         //   ...state,
         // videogamesLoaded: sortedArr
-
         // }
 
+
+
+        
       default:
         return state;
   }

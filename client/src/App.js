@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MainPage from './components/MainPage/MainPage';
 import Home from './components/Home/Home';
 import CreateVG from './components/CreateVG/CreateVG';
-import VGDetails from './components/VGDetails/VGDetails';
+import VGDetails from './components/Details/Details';
 
 
 function App() {

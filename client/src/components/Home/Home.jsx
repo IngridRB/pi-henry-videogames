@@ -15,8 +15,6 @@ const Home = () => {
   const dispatch = useDispatch();
   const allVideogames = useSelector ((state) => state.videogamesLoaded);
 
-  // const[ orden, setOrden ] = useState('');
-
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ videogamesPerPage, setVideogamesPerPage ] = useState(15);
   const indexOfLastVideogame = currentPage * videogamesPerPage;
@@ -54,9 +52,6 @@ const Home = () => {
   //   setCurrentPage(1);
   //   setOrden('Ordenado ${e.target.value}')
   // }
-
-
-
 
   return (
     <div>

@@ -1,17 +1,19 @@
 import './filter.css';
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 
 const Filter = () => {
+  const genres = useSelector((state) => state.genresLoaded);
+
   return (
     <div className="box-filter">
       <div className="filter">
         <select className="filter-button n1" defaultValue={'all'} name="gender" >
           <option value='all'>Filtrar por Género:</option>
-          {/* {
-            genres.map((genre) => (
-              <option key={genre.id} value={genre.name}>{genre.name}</option>
-            ))
-          } */}
+            {
+              genres.map((genre) => <option value={genre.name} key={genre.name}>{genre.name}</option>)
+            }
         </select>
 
         <select  className="filter-button n2" defaultValue={'all'} name="origin" >

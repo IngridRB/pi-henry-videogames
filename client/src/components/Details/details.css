@@ -1,5 +1,5 @@
 .container-details {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #0C2F5B;
   font-size: 1.8rem;
   display: flex;
@@ -9,15 +9,14 @@
 .card-details {
   background-color: #08203E;
   color: white;
-  width: 70%;
-  height: 70%;
+  width: 80%;
+  /* height: 50%; */
   padding: 1em;
   border: 0.1px solid rgb(202, 202, 202);
   border-radius: 3em;
   display: flex;
 }
 .card-details-image {
-  height: 100%;
   width: 40%;
   display: flex;
   align-items: center;
@@ -32,13 +31,13 @@
 }
 .card-details-body {
   width: 60%;
-  margin: 0 0 0 1em;
+  margin: 0 0.5em 0 1em;
 }
 .card-details-close {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  padding: 0.5em;
+  padding: 0.3em 0 0;
 }
 .card-details-close button {
   border: 0;
@@ -57,20 +56,27 @@
   border: 2px solid white;
 }
 .card-details-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;  
   font-family: 'Fredoka One', cursive;
   color: hsla(289, 68%, 19%, 1) ;  
-  -webkit-text-stroke: 1px  rgb(0, 183, 255);
-  padding-bottom: 1em;
+  -webkit-text-stroke: 1px rgb(0, 183, 255);
+  padding-bottom: 0.5em;
   display: flex;
   justify-content: center;
+}
+.card-text {
+  padding-bottom: 0.2em;
 }
 .card-text p {
   margin-bottom: 0.5em;
   color: #EF5CFF;
+  font-size: 1.6rem;
 }
 .text{
   color: rgb(223, 223, 223);
-  font-size: 1.8rem;
+  font-size: 1.7rem;
+}
+.text.description {
+  font-size: 1.6rem;
 }
