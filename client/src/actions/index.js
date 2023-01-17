@@ -11,12 +11,12 @@ export function getVideogames() {
   }
 }
 
-export function getNameVideogames(name) {
+export function searchVideogames(name) {
   return async function (dispatch) {
     try {
       const json = await axios.get (`http://localhost:3001/videogames?name=${name}`);
       return dispatch ({
-        type: 'GET_NAME_VIDEOGAMES',
+        type: 'SEARCH_VIDEOGAMES',
         payload: json.data
       })
     } catch (error) {
@@ -46,18 +46,18 @@ export function getPlatforms() {
 export function postVideogames(payload) {
   return async function(dispatch){
     const response = await axios.post('http://localhost:3001/videogames', payload);
-    console.log(response)
     return response;
   }
 }
 
-export function filterVideogames(genre, origin, sortBy) {
+export function filterVideogames({genre, origin, sortBy, name}) {
   return {
     type: "FILTER_VIDEOGAMES",
     payload: {
       genre,
       origin,
       sortBy,
+      name,
     }
   };
 }

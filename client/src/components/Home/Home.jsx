@@ -5,15 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getVideogames, getGenres, getPlatforms } from '../../actions';
 
 import Header from '../Header/Header';
-import Filter from '../Filter/Filter';
-// import Card from '../Card/Card';
 import Paginated from '../Paginated/Paginated';
 import Cards from '../Cards/Cards';
 
 
 const Home = () => {
   const dispatch = useDispatch();
-  const allVideogames = useSelector ((state) => state.videogamesLoaded);
+  const allVideogames = useSelector ((state) => state.filteredVideogames);
 
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ videogamesPerPage, setVideogamesPerPage ] = useState(15);
@@ -24,47 +22,24 @@ const Home = () => {
   const changeCurrentPage = (pageNumber) => {
     setCurrentPage(pageNumber)
   }
+
   useEffect (() => {
     dispatch(getVideogames());
-  }, [dispatch]) 
-  
-  useEffect(() => {
-    dispatch(getGenres()); 
+    dispatch(getGenres());
+    dispatch(getPlatforms());
   }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getPlatforms()); 
-  }, [dispatch]);
-  
-  
-
-  // function handleFilterStatus(e) {
-  //   dispatch(filterVideogamesByStatus(e.target.value)) 
-  // }
-
-  // function handleFilterCreated(e) {
-  //   dispatch(filterCreated(e.target.value)) 
-  // }
-
-  // const handleSort = (e) => {
-  //   e.preventDefault();
-  //   dispatch(orderByName(e.target.value))
-  //   setCurrentPage(1);
-  //   setOrden('Ordenado ${e.target.value}')
-  // }
 
   return (
     <div>
       <Header />
       <main>
-        <Filter 
-      
-          
-        />
-
-        <Cards 
-          videoGames={currentVideogames}
-        />
+        {
+          currentVideogames.length === 0 ?
+          <p>No hay juegos</p> : 
+          <Cards 
+            videoGames={currentVideogames}
+          />
+        }
       </main>
       <footer>
         <Paginated 

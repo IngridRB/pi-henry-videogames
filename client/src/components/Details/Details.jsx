@@ -48,7 +48,12 @@ const Details = () => {
                     <p>Fecha de lanzamiento: <span className="text"> {state.released} </span></p>
                     <p>Rating: <span className="text"> {state.rating} </span></p>
                     <p>Plataformas: <span className="text"> {state.platforms.join(', ')} </span></p>
-                    <p>Descripción: <span className="text description"> {state.description} </span></p>
+                    <p>Descripción:
+                      <span
+                        className="text description"
+                        dangerouslySetInnerHTML={{__html: state.description}}
+                      ></span>
+                    </p>
                   </div>
                 </div>
               </>

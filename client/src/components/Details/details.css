@@ -68,7 +68,7 @@
 .card-text {
   padding-bottom: 0.2em;
 }
-.card-text p {
+.card-text > p {
   margin-bottom: 0.5em;
   color: #EF5CFF;
   font-size: 1.6rem;

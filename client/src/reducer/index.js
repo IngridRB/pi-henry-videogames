@@ -1,6 +1,6 @@
 const initialState = {
   videogamesLoaded : [],
-  allVideogames: [],
+  // allVideogames: [],
   
   filteredVideogames: [],
 
@@ -21,10 +21,11 @@ function rootReducer (state = initialState, action) {
       return {
         ...state,
         videogamesLoaded: action.payload,
-        allVideogames: action.payload,
+        filteredVideogames: action.payload,
+        // allVideogames: action.payload,
         platformsLoaded: [...new Set(platforms)],
       };
-    case 'GET_NAME_VIDEOGAMES':
+    case 'SEARCH_VIDEOGAMES':
       return {
         ...state,
         videogamesLoaded: action.payload,
@@ -47,9 +48,15 @@ function rootReducer (state = initialState, action) {
     
     case 'FILTER_VIDEOGAMES':
       const filteredVideogames = state.videogamesLoaded.filter((videogame) => {
+        const searchName = action.payload.name.trim();
         return (
-          (action.payload.genre === 'all' || videogame.genres?.includes(action.payload.genre)) &&
-          (action.payload.origin === 'all' || videogame.source === action.payload.origin)
+          (videogame.name.toLowerCase().includes(searchName)) &&
+          (action.payload.genre === 'all' || videogame.genres.includes(action.payload.genre)) &&
+          (
+            action.payload.origin === 'all' ||
+            (action.payload.origin === 'api' && !videogame.createdInDb) ||
+            (action.payload.origin === 'db' && videogame.createdInDb)
+          )
         );
       }).sort(
         (videogameA, videogameB) => {
