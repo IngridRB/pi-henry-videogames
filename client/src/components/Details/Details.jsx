@@ -24,43 +24,52 @@ const Details = () => {
       });
   }, [id]);
 
+  const num = Math.round(state.rating);
+  // const starEmoji = "⭐️";
+  let stars = "";
+  for (let i = 0; i < num; i++) {
+    stars += "⭐️";
+  }
+
   return (
     <div className="container-details">
-      <div className="card-details">
-        { 
-          loading ? <p>Cargando...</p> : (
-            error ? <p>El ID ingresado no existe.</p> : (
-              <>
+      { 
+        loading ? <p className='error-text'>Cargando...</p> : (
+          error ? <p className='error-text'>El ID ingresado no existe.</p> : (
+            <div className="card-details">
+              {state.img ? 
                 <div className="card-details-image">
                   <img src={state.img}  alt="Imagen del Videojuego" />
+                </div> : ''}
+              {/* <div className="card-details-image">
+                <img src={state.img}  alt="Imagen del Videojuego" />
+              </div>  */}
+              <div className={`card-details-body ${state.img ? '' : 'card-details-body-100'}`}>
+                <div className="card-details-close"> 
+                  <Link to="/home/" >          
+                    <button>x</button>
+                  </Link>
                 </div>
-                <div className="card-details-body">
-                  <div className="card-details-close"> 
-                    <Link to="/home/" >          
-                      <button>x</button>
-                    </Link>
-                  </div>
-                  <div className="card-details-title">
-                    <h2>{state.name}</h2>
-                  </div>
-                  <div className='card-text'>
-                    <p>Géneros: <span className="text"> {state.genres.join(', ')} </span></p>
-                    <p>Fecha de lanzamiento: <span className="text"> {state.released} </span></p>
-                    <p>Rating: <span className="text"> {state.rating} </span></p>
-                    <p>Plataformas: <span className="text"> {state.platforms.join(', ')} </span></p>
-                    <p>Descripción:
-                      <span
-                        className="text description"
-                        dangerouslySetInnerHTML={{__html: state.description}}
-                      ></span>
-                    </p>
-                  </div>
+                <div className="card-details-title">
+                  <h2>{state.name}</h2>
                 </div>
-              </>
-            )
+                <div className='card-text'>
+                  <p>Géneros: <span className="text"> {state.genres.join(', ')} </span></p>
+                  <p>Fecha de lanzamiento: <span className="text"> {state.released} </span></p>
+                  <p>Rating: <span className="text">{stars} ({state.rating})</span></p> 
+                  <p>Plataformas: <span className="text"> {state.platforms.join(', ')} </span></p>
+                  <p>Descripción:
+                    <span
+                      className="text description"
+                      dangerouslySetInnerHTML={{__html: state.description}}
+                    ></span>
+                  </p>
+                </div>
+              </div>
+            </div>
           )
-        } 
-      </div>
+        )
+      } 
     </div>
   );
 }

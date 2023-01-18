@@ -75,11 +75,9 @@ function validateRating(rating) {
   if (number % 1 !== 0) {
     return 'El rating debe ser un número entero.'
   }
-
   if (number > 5 || number < 0) {
     return 'El rating debe estar entre 0 y 5.';
   }
-
   return '';
 }
 
@@ -87,6 +85,9 @@ function validateDescription(description) {
   const trimmed = description.trim();
   if (trimmed.length === 0) {
     return 'Debes ingresar una descripción del videojuego.';
+  }
+  if (trimmed.length < 50) {
+    return 'La descripción no puede tener menos de 50 caracteres.';
   }
   if (trimmed.length > 500) {
     return 'La descripción no puede tener más de 500 caracteres.';
@@ -108,9 +109,6 @@ function validatePlatforms(selectedPlatforms) {
   return '';
 }
 
-
-// Genres y Platforms: lo dejas para que Carlos lo vea.
-
 const CreateVG = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -125,7 +123,7 @@ const CreateVG = () => {
     genres: 'Debes seleccionar al menos un género',
     platforms: 'Debes seleccionar al menos una plataforma',
   });
-  const [success, setSuccess] = useState(false);
+  // const [success, setSuccess] = useState(false);
 
   const [ inputState, setInputState ] = useState({
     name: '',
@@ -278,7 +276,7 @@ const CreateVG = () => {
               }
             </div>
             
-            {success && <p className="success-message">Videojuego creado exitosamente</p>}
+            {/* {success && <p className="success-message">Videojuego creado exitosamente</p>} */}
           </div>
         </form>
       </div>

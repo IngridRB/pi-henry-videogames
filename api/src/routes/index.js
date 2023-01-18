@@ -1,96 +1,14 @@
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const axios = require ('axios');
-const { Videogame, Genre } = require ('../db');
+const axios = require('axios');
+const { Videogame, Genre } = require('../db');
+const { searchAllVideogames, getAllVideogames, getVideogamesFromDb } = require('../controllers/videogames');
 
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-const getVideogamesFromApi = async () => {
-  let apiInfo = [];
-  for (let i = 1; i <= 5; i++) {
-    const apiUrl = await axios({
-      method: 'get',
-      url: `https://api.rawg.io/api/games?key=5b11753fb582487198394d84f504ed42&page=${i}`,
-      headers: { "Accept-Encoding": "null" }
-    });
-    apiUrl.data.results?.forEach(el => {
-      apiInfo.push({
-        id: el.id,
-        name: el.name,
-        img: el.background_image,
-        genres: el.genres.map(genre => genre.name),
-        released: el.released,
-        rating: el.rating,
-        platforms: el.platforms.map(el => el.platform.name),
-      })
-    });
-  }
-  return apiInfo;
-};
-
-const searchVideogamesFromApi = async (searchTerm) => {
-  const results = await axios.get(
-    `https://api.rawg.io/api/games?key=5b11753fb582487198394d84f504ed42&search=${searchTerm}`
-  );
-  return results.data.results.map(videogame => {
-    return {
-      id: videogame.id,
-      name: videogame.name,
-      img: videogame.background_image,
-      genres: videogame.genres.map(genre => genre.name),
-      released: videogame.released,
-      rating: videogame.rating,
-      platforms: videogame.platforms.map(el => el.platform.name),
-    };
-  });
-};
-
-const getVideogamesFromDb = async () => {
-  const videogames = await Videogame.findAll({
-    include:{
-      model: Genre,
-      attributes: ['name'],
-    },
-  });
-  return videogames;
-}
-
-const getAllVideogames = async () => {
-  const videogamesFromApi = await getVideogamesFromApi();
-  const videogamesFromDb = await getVideogamesFromDb();
-  const allVideogames = videogamesFromApi.concat(
-    videogamesFromDb.map(videogame => {
-      videogame = videogame.get({ plain: true });
-      return {
-        ...videogame,
-        genres: videogame.genres.map(genre => genre.name),
-        platforms: videogame.platforms.split(','),
-      };
-    })
-  );
-  return allVideogames;
-}
-
-const searchAllVideogames = async (name) => {
-  const videogamesFromApi = await searchVideogamesFromApi(name);
-  const videogamesFromDb = await getVideogamesFromDb();
-  const allVideogames = videogamesFromApi.concat(
-    videogamesFromDb.filter(videogame => {
-      return videogame.name.toLowerCase().includes(name.toLowerCase())
-    }).map(videogame => {
-      videogame = videogame.get({ plain: true });
-      return {
-        ...videogame,
-        genres: videogame.genres.map(genre => genre.name),
-        platforms: videogame.platforms.split(','),
-      };
-    })
-  );
-  return allVideogames;
-}
 
 router.get('/videogames', async (req, res) => {
   const { name } = req.query;

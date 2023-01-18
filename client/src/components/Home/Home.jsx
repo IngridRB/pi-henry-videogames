@@ -12,6 +12,7 @@ import Cards from '../Cards/Cards';
 const Home = () => {
   const dispatch = useDispatch();
   const allVideogames = useSelector ((state) => state.filteredVideogames);
+  const loading = useSelector(state => state.loading);
 
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ videogamesPerPage, setVideogamesPerPage ] = useState(15);
@@ -32,13 +33,15 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <main>
-        {
-          currentVideogames.length === 0 ?
-          <p>No hay juegos</p> : 
-          <Cards 
-            videoGames={currentVideogames}
-          />
+      <main className='main'>
+        {loading ? <p className='main-text'>Cargando...</p> :  
+          (
+            currentVideogames.length === 0 ?
+            <p className='main-text'>No hay juegos!</p> : 
+            <Cards 
+              videoGames={currentVideogames}
+            />
+          )
         }
       </main>
       <footer>

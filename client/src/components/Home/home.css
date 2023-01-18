@@ -1,0 +1,11 @@
+.main {
+  min-height: 80vh;
+  background-color: #0C2F5B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-text {
+  color: white;
+  font-size: 6rem;
+}

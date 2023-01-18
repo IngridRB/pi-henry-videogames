@@ -15,6 +15,7 @@ const Cards = ({ videoGames }) => {
             img={videoGame.img}
             name={videoGame.name}
             genres={videoGame.genres}
+            rating={videoGame.rating}
           />
         );
       })

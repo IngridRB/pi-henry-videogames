@@ -1,5 +1,4 @@
 .cards {
-  background-color: #E2F8FA;
   background-color: #0C2F5B;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -8,7 +7,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
   min-height: 100vh;
-  height: 100%;
+  width: 100%;
 }
 
 /* .breed-cards {

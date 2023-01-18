@@ -6,6 +6,10 @@
   align-items: center;
   justify-content: center;
 }
+.error-text {
+  color: white;
+  font-size: 6rem;
+}
 .card-details {
   background-color: #08203E;
   color: white;
@@ -31,7 +35,11 @@
 }
 .card-details-body {
   width: 60%;
+  max-width: 100%;
   margin: 0 0.5em 0 1em;
+}
+.card-details-body-100 {
+  width: 100%;
 }
 .card-details-close {
   width: 100%;
