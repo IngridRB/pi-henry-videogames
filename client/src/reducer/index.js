@@ -1,5 +1,6 @@
 const initialState = {
-  videogamesLoaded : [], 
+  videogamesLoaded : [],
+   
   filteredVideogames: [],
   genresLoaded: [],
   platformsLoaded: [],

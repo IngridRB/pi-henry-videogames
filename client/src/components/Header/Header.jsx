@@ -17,35 +17,23 @@ const Header = () => {
     origin: 'all',
     sortBy: 'all',
   });
-
   const [ name, setName ] = useState ('');
 
   function handleSubmit(e) {
     e.preventDefault(e)
     dispatch(setLoading(true));
     dispatch(searchVideogames(name));
+    setFilterState({
+      genre: 'all',
+      origin: 'all',
+      sortBy: 'all',
+    });
   }
 
-  function handleInputName(e) {
+  function handleInputChange(e) {
+    e.preventDefault();
     setName(e.target.value);
   }
-
-  // function handleInputChange(e) {
-  //   e.preventDefault();
-  //   setFilterState({
-  //     ...filterState,
-  //     [e.target.name]: e.target.value,
-  //   });
-  //   dispatch(filterVideogames({
-  //     ...filterState,
-  //     [e.target.name]: e.target.value,
-  //   }));
-  // }
-
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   dispatch(filterVideogames(filterState));
-  // }
 
   function handleFiltersChange(e) {
     setFilterState({
@@ -65,8 +53,8 @@ const Header = () => {
       </Link>
       <nav className="navbar">
         <form className="search" action="" method="get" onSubmit={(e) => handleSubmit(e)}>
-          <input onChange={(e) => handleInputName(e)} name="name" type="text" placeholder="Buscar VideoJuegos" />
-          <button type="submit"><img src={search}  alt="search" /></button>
+          <input onChange={(e) => handleInputChange(e)} name="name" type="text" placeholder="Buscar VideoJuegos" />
+          <button type="submit"><img src={search} alt="search" /></button>
         </form>
         <NavLink to="/create/" >          
           <button className="create-button">Nuevo VideoJuego</button>
@@ -75,20 +63,20 @@ const Header = () => {
     </header>
     <div className="box-filter">
     <div className="filter">
-      <select className="filter-button n1" defaultValue={'all'} name="genre" onChange={handleFiltersChange}>
+      <select className="filter-button n1" defaultValue={'all'} value={filterState.genre} name="genre" onChange={handleFiltersChange}>
         <option value='all'>Filtrar por Género:</option>
           {
             genres.map((genre) => <option value={genre.name} key={genre.name}>{genre.name}</option>)
           }
       </select>
 
-      <select  className="filter-button n2" defaultValue={'all'} name="origin" onChange={handleFiltersChange}>
+      <select  className="filter-button n2" defaultValue={'all'} value={filterState.origin} name="origin" onChange={handleFiltersChange}>
         <option value="all">Filtrar por Origen:</option>
         <option value="api">API</option>
         <option value="db">Base de Datos</option>
       </select>
 
-      <select className="filter-button n3" defaultValue={'all'} name="sortBy" onChange={handleFiltersChange}>
+      <select className="filter-button n3" defaultValue={'all'} value={filterState.sortBy} name="sortBy" onChange={handleFiltersChange}>
         <option value="all">Ordenar por: </option>
         <option value="alpha-asc">Orden Alfabético Ascendente</option>
         <option value="alpha-desc">Orden Alfabético Descendente</option>

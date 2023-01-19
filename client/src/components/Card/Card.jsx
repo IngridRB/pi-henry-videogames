@@ -1,12 +1,11 @@
 import "./card.css";
 import React from "react";
-import { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-const Card = ({ id, img, name, genres, rating }) => {
-  
+const Card = ({ id, img, name, genres, rating }) => { 
   const history = useHistory();
+
   const num = Math.round(rating);
-  // const starEmoji = "⭐️";
   let stars = "";
   for (let i = 0; i < num; i++) {
     stars += "⭐️";

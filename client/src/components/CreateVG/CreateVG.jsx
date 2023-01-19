@@ -124,7 +124,7 @@ const CreateVG = () => {
     platforms: 'Debes seleccionar al menos una plataforma',
   });
   // const [success, setSuccess] = useState(false);
-
+  
   const [ inputState, setInputState ] = useState({
     name: '',
     released: '',
@@ -189,15 +189,6 @@ const CreateVG = () => {
     alert("Videojuego creado!!");
     history.push('/home');
   }
-
-  // useEffect(() => {
-  //   dispatch(getGenres()); 
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(getPlatforms()); 
-  // }, [dispatch]);
-  
 
   return (
     <div className="container-createVG">
