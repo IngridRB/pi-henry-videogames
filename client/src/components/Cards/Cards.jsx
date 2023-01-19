@@ -24,5 +24,4 @@ const Cards = ({ videoGames }) => {
   )
 };
 
-
 export default Cards;

@@ -28,10 +28,10 @@ const Details = () => {
       });
   }, [id, history]);
 
-  const num = Math.round(videogame.rating);
-  let stars = "";
-  for (let i = 0; i < num; i++) {
-    stars += "⭐️";
+  const integerRating = Math.round(videogame.rating);
+  let starsRating = "";
+  for (let i = 0; i < integerRating; i++) {
+    starsRating += "⭐️";
   }
 
   return (
@@ -42,7 +42,7 @@ const Details = () => {
             <div className="card-details">
               {videogame.img ? 
                 <div className="card-details-image">
-                  <img src={videogame.img}  alt="Imagen del Videojuego" />
+                  <img src={ videogame.img } alt="Imagen del Videojuego"/>
                 </div> : ''}
               <div className={`card-details-body ${videogame.img ? '' : 'card-details-body-100'}`}>
                 <div className="card-details-close"> 
@@ -51,13 +51,13 @@ const Details = () => {
                   </Link>
                 </div>
                 <div className="card-details-title">
-                  <h2>{videogame.name}</h2>
+                  <h2>{ videogame.name }</h2>
                 </div>
                 <div className='card-text'>
-                  <p>Géneros: <span className="text"> {videogame.genres.join(', ')} </span></p>
-                  <p>Fecha de lanzamiento: <span className="text"> {videogame.released} </span></p>
-                  <p>Rating: <span className="text">{stars} ({videogame.rating})</span></p> 
-                  <p>Plataformas: <span className="text"> {videogame.platforms.join(', ')} </span></p>
+                  <p>Géneros: <span className="text">{ videogame.genres.join(', ') }</span></p>
+                  <p>Fecha de lanzamiento: <span className="text">{ videogame.released }</span></p>
+                  <p>Rating: <span className="text">{ starsRating } ({ videogame.rating })</span></p> 
+                  <p>Plataformas: <span className="text">{ videogame.platforms.join(', ') }</span></p>
                   <p>Descripción:
                     <span
                       className="text description"

@@ -1,4 +1,4 @@
-import './createVG.css'
+import './createVideogame.css'
 import React from 'react';
 import { useState } from 'react';
 import { Link, useHistory} from 'react-router-dom';
@@ -70,7 +70,7 @@ function validateRating(rating) {
   if (isNaN(trimmed)) {
     return 'El rating debe ser un número.';
   }
-  
+
   const number = parseFloat(trimmed);
   if (number % 1 !== 0) {
     return 'El rating debe ser un número entero.'
@@ -109,7 +109,7 @@ function validatePlatforms(selectedPlatforms) {
   return '';
 }
 
-const CreateVG = () => {
+const CreateVideogame = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const genres = useSelector((state) => state.genresLoaded);
@@ -123,7 +123,6 @@ const CreateVG = () => {
     genres: 'Debes seleccionar al menos un género',
     platforms: 'Debes seleccionar al menos una plataforma',
   });
-  // const [success, setSuccess] = useState(false);
   
   const [ inputState, setInputState ] = useState({
     name: '',
@@ -191,34 +190,33 @@ const CreateVG = () => {
   }
 
   return (
-    <div className="container-createVG">
-
-      <div className="createVG">
+    <div className="container-createVideogame">
+      <div className="createVideogame">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <h2 className="createVG-title">Crear un VideoJuego</h2>
+          <h2 className="createVideogame-title">Crear un VideoJuego</h2>
           <div>
-            <div className="createVG-input">
+            <div className="createVideogame-input">
               <label>Nombre: </label>
               <input type="text" name="name" placeholder="Nombre del VideoJuego" onChange={handleChange}/>
               {errors.name && (
                 <p className='input-error'>{errors.name}</p>
               )}
             </div>
-            <div className="createVG-input">
+            <div className="createVideogame-input">
               <label>Fecha de lanzamiento: </label>
               <input className='input-date' type="date" name="released" onChange={handleChange}/>
               {errors.released && (
                 <p className='input-error'>{errors.released}</p>
               )}
             </div>
-            <div className="createVG-input">
+            <div className="createVideogame-input">
               <label>Rating: </label>
               <input type="text"  name="rating" placeholder="Rating (1 - 5)"  onChange={handleChange}/>
               {errors.rating && (
                 <p className='input-error'>{errors.rating}</p>
               )}
             </div>
-            <div className="createVG-input">
+            <div className="createVideogame-input">
               <label>Descripción: </label>
               <textarea type="text" name="description" rows="2"  placeholder="Ingresa la descripción del VideoJuego" onChange={handleChange}></textarea>
               {errors.description && (
@@ -226,11 +224,11 @@ const CreateVG = () => {
               )}
             </div>
             
-            <div className="createVG-input">
+            <div className="createVideogame-input">
               <label>Géneros: </label>
               <select name="genre" multiple onChange={handleSelectGenres}>
                 {
-                  genres.map((genre) => <option value={genre.name} key={genre.name}>{genre.name}</option>)
+                  genres.map((genre) => <option value={genre.name} key={genre.name}>{ genre.name }</option>)
                 }
               </select>
               {errors.genres && (
@@ -241,11 +239,11 @@ const CreateVG = () => {
               }
             </div>
 
-            <div className="createVG-input">
+            <div className="createVideogame-input">
               <label>Plataformas: </label>
-              <select className="" name="platforms" onChange={handleSelectPlatforms} multiple >
+              <select className="" name="platforms" onChange={handleSelectPlatforms} multiple>
                 {
-                  platforms.map((platform) => <option value={platform} key={platform}>{platform}</option>)
+                  platforms.map((platform) => <option value={platform} key={platform}>{ platform }</option>)
                 }
               </select>
               {errors.platforms && (
@@ -255,25 +253,21 @@ const CreateVG = () => {
                 inputState.platforms ? <p className='selected'>{ inputState.platforms.join(', ') }</p> : ''
               }
             </div>
-
-            <div  className="createVG-buttons">
-              <Link to="/home" >         
-                <button type="" className="createVG-button">Cancelar</button>
+            <div className="createVideogame-buttons">
+              <Link to="/home">         
+                <button type="" className="createVideogame-button">Cancelar</button>
               </Link>
               {
                 (Object.keys(errors).length === 0) ?
-                  <button type="submit" className="createVG-button">Crear VideoJuego</button> :
+                  <button type="submit" className="createVideogame-button">Crear VideoJuego</button> :
                   ''
               }
             </div>
-            
-            {/* {success && <p className="success-message">Videojuego creado exitosamente</p>} */}
           </div>
         </form>
-      </div>
-        
+      </div>     
     </div>
   )
 }
 
-export default CreateVG;
+export default CreateVideogame;

@@ -19,13 +19,12 @@ const Paginated = ({  videogamesPerPage, allVideogames, changeCurrentPage, curre
       <button className="footer-button" onClick={prevPage} disabled={currentPage === pageNumbers[0] ? true : false}>
         <span className="material-symbols-outlined">keyboard_double_arrow_left</span>
       </button>
-      
-        { pageNumbers && 
+      { pageNumbers && 
         pageNumbers.map(number => (
-            <button className={`footer-button ${currentPage === number ? 'active' : ''}`} key={number} 
-              onClick={() => changeCurrentPage(number)}>{ number }</button>
-        ))}
-
+          <button className={`footer-button ${currentPage === number ? 'active' : ''}`} key={number} 
+            onClick={() => changeCurrentPage(number)}>{ number }</button>
+        ))
+      }
       <button className="footer-button" onClick={nextPage} disabled={currentPage === pageNumbers.length ? true : false}>
         <span className="material-symbols-outlined">keyboard_double_arrow_right</span>
       </button>

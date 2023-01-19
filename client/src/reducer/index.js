@@ -1,14 +1,14 @@
 const initialState = {
   videogamesLoaded : [],
-   
   filteredVideogames: [],
   genresLoaded: [],
   platformsLoaded: [],
-  loading: true,
+  isLoading: true,
 }
 
 function rootReducer (state = initialState, action) {
   switch(action.type) {
+
     case 'GET_VIDEOGAMES':
       const videogames = action.payload;
       const platforms = [];  
@@ -22,7 +22,7 @@ function rootReducer (state = initialState, action) {
         videogamesLoaded: action.payload,
         filteredVideogames: action.payload,
         platformsLoaded: [...new Set(platforms)],
-        loading: false,
+        isLoading: false,
       };
 
     case 'SEARCH_VIDEOGAMES':
@@ -30,7 +30,7 @@ function rootReducer (state = initialState, action) {
         ...state,
         videogamesLoaded: action.payload,
         filteredVideogames: action.payload,
-        loading: false,
+        isLoading: false,
       }
 
     case 'GET_GENRES':
@@ -38,21 +38,22 @@ function rootReducer (state = initialState, action) {
         ...state,
         genresLoaded: action.payload,
       }
+
     case 'POST_VIDEOGAMES':
       return {
         ...state,
       }
+
     case 'SET_LOADING':
       return {
         ...state,
-        loading: action.payload,
+        isLoading: action.payload,
       }
     
     case 'FILTER_VIDEOGAMES':
       const filteredVideogames = state.videogamesLoaded.filter((videogame) => {
-        // const searchName = action.payload.name.trim();
+        
         return (
-          // (videogame.name.toLowerCase().includes(searchName)) &&
           (action.payload.genre === 'all' || videogame.genres.includes(action.payload.genre)) &&
           (
             action.payload.origin === 'all' ||
@@ -86,8 +87,8 @@ function rootReducer (state = initialState, action) {
         filteredVideogames,
       };
    
-      default:
-        return state;
+    default:
+      return state;
   }
 }
 export default rootReducer;

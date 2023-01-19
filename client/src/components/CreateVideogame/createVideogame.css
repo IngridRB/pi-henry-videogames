@@ -1,4 +1,4 @@
-.container-createVG {
+.container-createVideogame {
   background-color: #0C2F5B;
   display: flex;
   min-height: 100vh;
@@ -7,7 +7,7 @@
   padding: 17px;
   font-size: 1.6rem;
 }
-.createVG{
+.createVideogame{
   color: white;
   /* color: #e81cff; */
   background-color: #08203E;
@@ -20,17 +20,17 @@
   justify-content: center;
   flex-direction: column;
 }
-.createVG-title {
+.createVideogame-title {
   padding-bottom: 0.8em;
   font-size: 3.3rem;
   font-family: 'Titan One', cursive;
   -webkit-text-stroke: 0.5px  rgb(0, 183, 255);
   color: hsla(289, 68%, 19%, 1) ;  
 }
-.createVG-input {
+.createVideogame-input {
   padding-bottom: 0.7em;
 }
-.createVG-input input {
+.createVideogame-input input {
   color: white;
   padding: 0.5em 1em;
   background-color: #1F2833; 
@@ -40,7 +40,7 @@
   color: rgb(202, 202, 202);
 }
 
-.createVG-input textarea {
+.createVideogame-input textarea {
   width: 100%;
   padding: 0.8em 1em;
   background-color: #1F2833; 
@@ -53,14 +53,14 @@ input::placeholder {
 textarea::placeholder {
   color: rgb(202, 202, 202);
 }
-.createVG-input select {
+.createVideogame-input select {
   width: 100%;
   background-color: rgb(44, 5, 53); 
   border: 0.5px solid rgb(202, 202, 202);
   color: rgb(205, 205, 205);
   margin-bottom: 0.2em;
 }
-.createVG-input option {
+.createVideogame-input option {
   padding: 0.3em 1em;
   border-bottom: 0.5px solid rgb(202, 202, 202);
 }
@@ -73,12 +73,12 @@ textarea::placeholder {
   -webkit-text-stroke: 0.5px rgb(0, 183, 255);
   /* -webkit-text-stroke: 0.5px #e81cff; */
 }
-.createVG-buttons {
+.createVideogame-buttons {
   padding-top: 0.3em;
   display: flex;
   justify-content: space-between;
 }
-.createVG-button {
+.createVideogame-button {
   border: 2px solid #e81cff;
   color: #e81cff;
   background-color: #1F2833; 
@@ -89,13 +89,13 @@ textarea::placeholder {
   cursor: pointer;
   /* box-shadow: 0px 8px 15px #EF5CFF; */
 }
-.createVG-button:hover {
+.createVideogame-button:hover {
   background-color: rgb(0, 183, 255);
   border: 2px solid white;
   box-shadow: none;
   color: white;
 }
-.createVG-button:disabled {
+.createVideogame-button:disabled {
   color: transparent;
 }
 

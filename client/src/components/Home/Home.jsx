@@ -3,11 +3,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVideogames, getGenres, getPlatforms } from '../../actions';
-
 import Header from '../Header/Header';
 import Paginated from '../Paginated/Paginated';
 import Cards from '../Cards/Cards';
-
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -32,7 +30,9 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
+      <Header 
+        setCurrentPage={setCurrentPage}
+      />
       <main className='main'>
         {loading ? <p className='main-text'>Cargando...</p> :  
           (

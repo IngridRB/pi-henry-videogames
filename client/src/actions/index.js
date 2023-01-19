@@ -66,8 +66,6 @@ export function filterVideogames({genre, origin, sortBy}) {
       genre,
       origin,
       sortBy,
-      // name,
     }
   };
 }
-

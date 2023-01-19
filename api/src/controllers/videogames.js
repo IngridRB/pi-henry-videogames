@@ -2,15 +2,15 @@ const axios = require('axios');
 const { Videogame, Genre } = require('../db');
 
 const getVideogamesFromApi = async () => {
-  let apiInfo = [];
+  let videogames = [];
   for (let i = 1; i <= 5; i++) {
-    const apiUrl = await axios({
+    const apiResults = await axios({
       method: 'get',
       url: `https://api.rawg.io/api/games?key=5b11753fb582487198394d84f504ed42&page=${i}`,
       headers: { "Accept-Encoding": "null" }
     });
-    apiUrl.data.results?.forEach(el => {
-      apiInfo.push({
+    apiResults.data.results?.forEach(el => {
+      videogames.push({
         id: el.id,
         name: el.name,
         img: el.background_image,
@@ -21,7 +21,7 @@ const getVideogamesFromApi = async () => {
       })
     });
   }
-  return apiInfo;
+  return videogames;
 };
 
 const getVideogamesFromDb = async () => {
@@ -51,10 +51,10 @@ const getAllVideogames = async () => {
 }
 
 const searchVideogamesFromApi = async (searchTerm) => {
-  const results = await axios.get(
+  const wantedVideogames = await axios.get(
     `https://api.rawg.io/api/games?key=5b11753fb582487198394d84f504ed42&search=${searchTerm}`
   );
-  return results.data.results.map(videogame => {
+  return wantedVideogames.data.results.map(videogame => {
     return {
       id: videogame.id,
       name: videogame.name,

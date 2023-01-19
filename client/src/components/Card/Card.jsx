@@ -5,10 +5,10 @@ import { useHistory } from 'react-router-dom';
 const Card = ({ id, img, name, genres, rating }) => { 
   const history = useHistory();
 
-  const num = Math.round(rating);
-  let stars = "";
-  for (let i = 0; i < num; i++) {
-    stars += "⭐️";
+  const integerRating = Math.round(rating);
+  let starsRating = "";
+  for (let i = 1; i <= integerRating; i++) {
+    starsRating += "⭐️";
   }
 
   return (
@@ -17,7 +17,7 @@ const Card = ({ id, img, name, genres, rating }) => {
         <h3 className="card-title">{ name }</h3>
         {img ? <img className="card-image" src={ img } alt="Imagen referencial del videojuego"/> : ''}
         <p className="card-item">Géneros: <span>{ genres.join(', ') }</span></p>
-        <p>{stars}</p> 
+        <p>{starsRating}</p> 
         {/* <p className="card-item">{Math.round(rating)}</p> */}
         {/* <p className="card-item">{rating}</p> */}
       </div>
