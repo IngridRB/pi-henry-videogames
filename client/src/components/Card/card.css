@@ -1,17 +1,18 @@
 .card-border {
   background: linear-gradient(90deg, hsla(197, 100%, 52%, 1) 0%, hsla(294, 100%, 52%, 1) 100%);
   /* background: -webkit-linear-gradient(90deg, hsla(197, 100%, 52%, 1) 0%, hsla(294, 100%, 52%, 1) 100%); */
-  max-width: 300px;
+  max-width: 380px;
   width: 80%;
   height: 400px;
   padding: 0.5em;
   border-radius: 20px; 
   outline: unset;
+  cursor: pointer;
 }
 .card {
   padding-left: 15px;
   padding-right: 15px;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   height: 100%;
   background: #07182E;
   display: flex;
@@ -19,11 +20,10 @@
   justify-content: center;
   flex-direction: column;
   border-radius: 20px;
-  text-decoration: none ;
 }
 .card-title {
   padding-bottom: 0.25em;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: bold;  
   font-family: 'Fredoka One', cursive;
   color: hsla(289, 68%, 19%, 1) ;  
@@ -33,7 +33,7 @@
   line-height: 0.9;
 }
 .card-image{
-  width: 75%;
+  width: 85%;
   height: 55%;
   padding: 5px 5px;
   border: solid #24066a;
@@ -45,7 +45,6 @@
   color: #EF5CFF;
   width: 80%;
   font-size: 2rem;
-  outline: unset;
   text-decoration: none ;
 }
 .card-item span {
@@ -54,16 +53,13 @@
 .card-item.zeroRating {
   text-align: center;
 }
+.card-item-stars {
+  padding-top: 0.25em;
+  text-align: center;
+  font-size: 1.5rem;
+}
 
-/* @media (max-width: 700px) {
-  .card {
-    width: 90%;
-    padding: 1em;
-  }
-  .card-img {
-    width: 90px;
-  }
-} */
+
 
 
 

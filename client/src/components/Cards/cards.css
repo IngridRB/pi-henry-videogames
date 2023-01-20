@@ -9,7 +9,11 @@
   min-height: 100vh;
   width: 100%;
 }
-
+@media (max-width: 610px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 /* .breed-cards {
   margin-left: 4%;
   margin-right: 4%;

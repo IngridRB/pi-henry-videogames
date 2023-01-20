@@ -21,7 +21,7 @@ const Card = ({ id, img, name, genres, rating }) => {
             <p className="card-item">Géneros: <span>{ genres.join(', ') }</span></p> : ''}
         {/* <p className="card-item">Géneros: <span>{ genres.join(', ') }</span></p> */}
         { Math.round(rating) ? 
-            <p>{ starsRating }</p>  : 
+            <p className="card-item-stars">{ starsRating }</p>  : 
             <p className="card-item zeroRating"><span>{ rating }</span></p> 
         }
         {/* <p>{ starsRating }</p>  */}
