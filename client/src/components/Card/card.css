@@ -51,7 +51,9 @@
 .card-item span {
   color: rgb(223, 223, 223);
 }
-
+.card-item.zeroRating {
+  text-align: center;
+}
 
 /* @media (max-width: 700px) {
   .card {

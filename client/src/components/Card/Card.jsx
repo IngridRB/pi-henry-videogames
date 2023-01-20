@@ -16,8 +16,16 @@ const Card = ({ id, img, name, genres, rating }) => {
       <div className="card" onClick={() => history.push(`/videogame/${id}/`)}>
         <h3 className="card-title">{ name }</h3>
         {img ? <img className="card-image" src={ img } alt="Imagen referencial del videojuego"/> : ''}
-        <p className="card-item">Géneros: <span>{ genres.join(', ') }</span></p>
-        <p>{starsRating}</p> 
+
+        { genres.length !== 0 ? 
+            <p className="card-item">Géneros: <span>{ genres.join(', ') }</span></p> : ''}
+        {/* <p className="card-item">Géneros: <span>{ genres.join(', ') }</span></p> */}
+        { Math.round(rating) ? 
+            <p>{ starsRating }</p>  : 
+            <p className="card-item zeroRating"><span>{ rating }</span></p> 
+        }
+        {/* <p>{ starsRating }</p>  */}
+
         {/* <p className="card-item">{Math.round(rating)}</p> */}
         {/* <p className="card-item">{rating}</p> */}
       </div>
