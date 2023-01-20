@@ -9,7 +9,7 @@ import Cards from '../Cards/Cards';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const allVideogames = useSelector ((state) => state.filteredVideogames);
+  const allVideogames = useSelector((state) => state.filteredVideogames);
   const isLoading = useSelector(state => state.isLoading);
 
   const [ currentPage, setCurrentPage ] = useState(1);
@@ -31,7 +31,6 @@ const Home = () => {
   return (
     <div>
       <Header 
-        setCurrentPage={setCurrentPage}
       />
       <main className='main'>
         {isLoading ? <p className='main-text'>Cargando...</p> :  

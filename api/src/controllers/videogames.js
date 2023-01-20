@@ -39,7 +39,7 @@ const getAllVideogames = async () => {
   const videogamesFromDb = await getVideogamesFromDb();
   const allVideogames = videogamesFromApi.concat(
     videogamesFromDb.map(videogame => {
-      videogame = videogame.get({ plain: true });
+      videogame = videogame.get({ plain: true }); // por la relación circular
       return {
         ...videogame,
         genres: videogame.genres.map(genre => genre.name),
@@ -62,7 +62,7 @@ const searchVideogamesFromApi = async (searchTerm) => {
       genres: videogame.genres.map(genre => genre.name),
       released: videogame.released,
       rating: videogame.rating,
-      platforms: videogame.platforms.map(el => el.platform.name),
+      platforms: videogame.platforms?.map(el => el.platform.name) || [],
     };
   });
 };

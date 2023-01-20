@@ -9,7 +9,7 @@ import { searchVideogames, filterVideogames, setLoading } from '../../actions';
 import logo from '../img/logo.png';
 import imageSearch from '../img/search.png'
 
-const Header = ({ setCurrentPage }) => {
+const Header = () => {
   const dispatch = useDispatch();
   const genres = useSelector((state) => state.genresLoaded);
   const [filterState, setFilterState] = useState({
@@ -23,7 +23,6 @@ const Header = ({ setCurrentPage }) => {
     e.preventDefault(e)
     dispatch(setLoading(true));
     dispatch(searchVideogames(searchName));
-    setCurrentPage(1);
     setFilterState({
       genre: 'all',
       origin: 'all',
@@ -45,7 +44,6 @@ const Header = ({ setCurrentPage }) => {
       ...filterState,
       [e.target.name]: e.target.value,
     }));
-    setCurrentPage(1);
   }
 
   return (<>
