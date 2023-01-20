@@ -194,7 +194,7 @@ const CreateVideogame = () => {
       <div className="createVideogame">
         <form onSubmit={(e) => handleSubmit(e)}>
           <h2 className="createVideogame-title">Crear un VideoJuego</h2>
-          <div>
+          <div className='conteiner-input'>
             <div className="createVideogame-input">
               <label>Nombre: </label>
               <input type="text" name="name" placeholder="Nombre del VideoJuego" onChange={handleChange}/>

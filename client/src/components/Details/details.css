@@ -20,6 +20,9 @@
   border-radius: 3em;
   display: flex;
 }
+.card-details-50 {
+  width: 60%;
+}
 .card-details-image {
   width: 40%;
   display: flex;

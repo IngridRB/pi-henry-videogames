@@ -39,7 +39,7 @@ const Details = () => {
       { 
         loading ? <p className='error-text'>Cargando...</p> : (
           error ? <p className='error-text' >El ID ingresado no existe.</p> : (
-            <div className="card-details">
+            <div className={`card-details ${videogame.img ? '' : 'card-details-50'}`}>
               {videogame.img ? 
                 <div className="card-details-image">
                   <img src={ videogame.img } alt="Imagen del Videojuego"/>

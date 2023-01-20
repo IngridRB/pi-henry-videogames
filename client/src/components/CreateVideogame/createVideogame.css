@@ -9,7 +9,6 @@
 }
 .createVideogame{
   color: white;
-  /* color: #e81cff; */
   background-color: #08203E;
   width: 550px;
   padding: 2em 2.5em;
@@ -20,6 +19,7 @@
   justify-content: center;
   flex-direction: column;
 }
+
 .createVideogame-title {
   padding-bottom: 0.8em;
   font-size: 3.3rem;
@@ -65,8 +65,12 @@ textarea::placeholder {
   border-bottom: 0.5px solid rgb(202, 202, 202);
 }
 .input-error {
+  /* color: rgb(193, 0, 0); */
   color: red;
   font-size: 12px;
+  /* font-weight: bold;
+  background-color: rgb(255, 197, 197);
+  border: 0.5px solid red; */
 }
 .selected {
   font-size: 1.5rem;
