@@ -23,6 +23,7 @@ const Header = ({ setCurrentPage }) => {
     e.preventDefault(e)
     dispatch(setLoading(true));
     dispatch(searchVideogames(searchName));
+    setCurrentPage(1);
     setFilterState({
       genre: 'all',
       origin: 'all',
@@ -44,6 +45,7 @@ const Header = ({ setCurrentPage }) => {
       ...filterState,
       [e.target.name]: e.target.value,
     }));
+    setCurrentPage(1);
   }
 
   return (<>
